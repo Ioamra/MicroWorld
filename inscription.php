@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<title>Inscription</title>
-        <?php include "includes/head.php"; ?>
+        <?php require_once "includes/head.php"; ?>
 	</head>	
 	<body>
     <?php
-    include "includes/autoload.php";
-    include "includes/nav.php";
+    require_once "includes/autoload.php";
+    require_once "includes/nav.php";
 
     if (isset($_POST['submit'])){
     

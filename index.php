@@ -23,16 +23,17 @@ session_start();
 			$manager = new CategorieManager($bdd);
 			$manager->update($categ1);
 
-			var_dump($manager->get(1)->getNomCategorie());
+			// var_dump($manager->get(1)->getNomCategorie());
 			
-			$list = $manager->getList();
-			foreach($list as $li){
-				var_dump($li);
-			}
+			// $list = $manager->getList();
+			// foreach($list as $li){
+			// 	var_dump($li);
+			// }
+			var_dump($_SESSION);
 
 		?>
 		
 
-		<?php include "includes/footer.php"; ?>
+		<?php require_once "includes/footer.php"; ?>
 	</body>
 </html>
