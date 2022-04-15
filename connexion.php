@@ -16,14 +16,14 @@
 			$manager = new ClientManager($bdd);
 			$connexionOk = $manager->connexion(
                 new Client([
-				    "mail" => "$mail",
-				    "mdp" => "$mdp"
+				    "Mail" => "$mail",
+				    "Mdp" => "$mdp"
 			    ])
             );
             if ($connexionOk == false) $mesError = "Adresse e-mail ou mot de passe invalide.";
         }
 ?>
-        <div class="box-connexion">
+        <div class="box-perso">
             <div class="text-center">
                 <form method="post">
                     <h1 class="pb-4">Connexion</h1>

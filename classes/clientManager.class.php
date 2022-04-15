@@ -7,17 +7,45 @@ class ClientManager{
         $this->setDB($db);
     }
 
-    public function add(Client $client) {
+    public function inscription(Client $client) {
+        //* Vérification des doublons d'adresse mail
+        $req = $this->_db->prepare("SELECT * FROM client WHERE mail = :mail");
+        $req->bindValue(':mail', $client->getMail());
+        $req->execute();
+        $result = $req->rowCount();
+        if ($result > 0) {
+            return "Cette adresse mail est déjà utilisé.";
+        }
+    
+        //* Vérification des doublons de pseudo
+        $req = $this->_db->prepare("SELECT * FROM client WHERE pseudo = :pseudo");
+        $req->bindValue(':pseudo', $client->getPseudo());
+        $req->execute();
+        $result = $req->rowCount();
+        if ($result > 0) {
+            return "Ce pseudo est déjà utilisé.";
+        }
+
         $req = $this->_db->prepare('INSERT INTO client (nom, prenom, pseudo, mail, telephone, adresse, mdp) 
                                     VALUES (:nom, :prenom, :pseudo, :mail, :telephone, :adresse, :mdp)');
         $req->bindValue(':nom', $client->getNom());
         $req->bindValue(':prenom', $client->getPrenom());
-        $req->bindValue(':nomPseudo', $client->getNomPseudo());
+        $req->bindValue(':pseudo', $client->getPseudo());
         $req->bindValue(':mail', $client->getMail());
         $req->bindValue(':telephone', $client->getTelephone());
         $req->bindValue(':adresse', $client->getAdresse());
         $req->bindValue(':mdp', $client->getMdp());
         $req->execute();
+
+        session_start();
+        $_SESSION['id'] = $id;
+        $_SESSION['nom'] = $nom;
+        $_SESSION['prenom'] = $prenom;
+        $_SESSION['pseudo'] = $pseudo;
+        $_SESSION['mail'] = $mail;
+        $_SESSION['telephone'] = $telephone;
+        $_SESSION['adresse'] = $adresse;
+        header("location:index.php");
     }
 
     public function delete(Client $client) {
@@ -71,7 +99,7 @@ class ClientManager{
             $_SESSION['mail'] = $mail;
             $_SESSION['telephone'] = $telephone;
             $_SESSION['adresse'] = $adresse;
-            return true;
+            header("location:index.php");
         } else {
             return false;
         }

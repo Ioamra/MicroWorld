@@ -27,7 +27,7 @@
             <ul class="navbar-nav d-flex">
             <?php
                 //* deconnection || connection et inscription
-                    if(isset($_SESSION)){
+                    if(isset($_SESSION['id'])){
                         echo '<li class="nav-item"><a class="nav-link" href="includes/logout.php">Déconnection</a></li>';
                     }else{
                         echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>';
