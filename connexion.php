@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<title>Connexion</title>
-        <?php include "includes/head.php"; ?>
+        <?php require_once "includes/head.php"; ?>
 	</head>	
 	<body>
 <?php
@@ -10,10 +10,9 @@
 		require_once "includes/nav.php";
 
         if(isset($_POST['mail']) && isset($_POST['mdp'])){
-    
             $mail = $_POST['mail'];
             $mdp = sha1($_POST['mdp']);
-            
+
 			$manager = new ClientManager($bdd);
 			$connexionOk = $manager->connexion(
                 new Client([
@@ -21,9 +20,7 @@
 				    "mdp" => "$mdp"
 			    ])
             );
-            if ($connexionOk == false) {
-                $mesError = "Adresse e-mail ou mot de passe invalide.";
-            }
+            if ($connexionOk == false) $mesError = "Adresse e-mail ou mot de passe invalide.";
         }
 ?>
         <div class="box-connexion">
@@ -38,16 +35,13 @@
                         <label for="mdp" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control" id="mdp" name="mdp" required>
                     </div>
-                    
                     <button type="submit" class="btn btn-primary">Se connecter</button>
                 </form>
                 <hr/>
-                <?php
-                if(isset($mesError)){echo $mesError.'<hr/>';} ?>
+                <?php if (isset($mesError)) echo $mesError.'<hr/>'; ?>
                 <a href="inscription.php">Vous n'avez pas de compte, inscrivez-vous !</a>
             </div>
         </div>
-
 
         <?php include "includes/footer.php"; ?>
 	</body>
