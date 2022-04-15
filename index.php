@@ -5,14 +5,12 @@ session_start();
 <html lang="fr">
 <head>
 	<title>MicroWorld</title>
-	<?php include "includes/head.php"; ?>
+	<?php require_once "includes/head.php"; ?>
 </head>
 	<body>
-		<?php 
-		include "includes/bdd.php";
-		// include "includes/nav.php";
-		include "classes/categorie.class.php";
-		include "classes/categorieManager.class.php";
+		<?php
+		require_once "includes/autoload.php";
+		require_once "includes/nav.php";
 		?>
 		<br><br><br>
 		<?php
@@ -26,10 +24,11 @@ session_start();
 			$manager->update($categ1);
 
 			var_dump($manager->get(1)->getNomCategorie());
-			// $list = $manager->getList();
-			// foreach($list as $li){
-			// 	var_dump($li);
-			// }
+			
+			$list = $manager->getList();
+			foreach($list as $li){
+				var_dump($li);
+			}
 
 		?>
 		

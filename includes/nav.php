@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-sm bg-dark navbar-light fixed-top">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="">Logo</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#idDeLaCible">
@@ -24,10 +24,17 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="text" placeholder="Search">
-                <button class="btn btn-primary" type="button">Search</button>
-            </form> 
+            <ul class="navbar-nav d-flex">
+            <?php
+                //* deconnection || connection et inscription
+                    if(isset($_SESSION)){
+                        echo '<li class="nav-item"><a class="nav-link" href="includes/logout.php">Déconnection</a></li>';
+                    }else{
+                        echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>';
+                        echo '<li class="nav-item"><a class="nav-link" href="inscription.php">Inscription</a></li>';
+                    }
+            ?>
+            </ul> 
         </div>
     </div>
 </nav>

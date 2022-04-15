@@ -44,6 +44,39 @@ class ClientManager{
 		return new Client($donnees);
     }
 
+    public function connexion(Client $client) {    
+        $req = $this->_db->prepare("SELECT mail, mdp FROM client WHERE mail = :mail AND mdp = :mdp");
+        $req->bindValue(':mail', $client->getMail());
+        $req->bindValue(':mdp', $client->getMdp());
+        $req->execute();
+        $user_exist = $req->rowCount();
+        if ($user_exist == 1) {
+            $req = $this->_db->prepare("SELECT idClient, nom, prenom, pseudo, mail, telephone, adresse FROM client WHERE mail = :mail");
+            $req->bindValue(':mail', $client->getMail());
+            $req->execute();
+            $data = $req->fetch(\PDO::FETCH_OBJ);
+            $id = $data->idClient;
+            $nom =  $data->nom;
+            $prenom =  $data->prenom;
+            $pseudo =  $data->pseudo;
+            $mail =  $data->mail;
+            $telephone =  $data->telephone;
+            $adresse =  $data->adresse;
+    
+            session_start();
+            $_SESSION['id'] = $id;
+            $_SESSION['nom'] = $nom;
+            $_SESSION['prenom'] = $prenom;
+            $_SESSION['pseudo'] = $pseudo;
+            $_SESSION['mail'] = $mail;
+            $_SESSION['telephone'] = $telephone;
+            $_SESSION['adresse'] = $adresse;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function setDB(PDO $db) {
         $this->_db = $db;
     }
