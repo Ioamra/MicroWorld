@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Connexion</title>
+		<title>Connexion Administrateur</title>
         <?php require_once "includes/head.php"; ?>
 	</head>	
 	<body>
@@ -9,27 +9,24 @@
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
 
-        if(isset($_POST['mail']) && isset($_POST['mdp'])){
-            $mail = $_POST['mail'];
+        if(isset($_POST['pseudo']) && isset($_POST['mdp'])){
+            $pseudo = $_POST['pseudo'];
             $mdp = sha1($_POST['mdp']);
-
-			$manager = new ClientManager($bdd);
-			$connexionOk = $manager->connexion(
-                new Client([
-				    "Mail" => "$mail",
-				    "Mdp" => "$mdp"
-			    ])
-            );
-            if ($connexionOk == false) $mesError = "Adresse e-mail ou mot de passe invalide.";
+            if ($pseudo == "admin" && $mdp == "9cf95dacd226dcf43da376cdb6cbba7035218921") {
+                session_start();
+                $_SESSION['id'] = 0;
+                $_SESSION['admin'] = "admin";
+                header("location:index.php");
+            }
         }
 ?>
         <div class="box-perso">
             <div class="text-center">
                 <form method="post">
-                    <h1 class="pb-4">Connexion</h1>
+                    <h1 class="pb-4">Connexion administrateur</h1>
                     <div class="mb-3">
-                        <label for="mail" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" id="mail" name="mail" required>
+                        <label for="pseudo" class="form-label">Pseudo</label>
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" required>
                     </div>
                     <div class="mb-3">
                         <label for="mdp" class="form-label">Mot de passe</label>
@@ -39,7 +36,6 @@
                 </form>
                 <hr/>
                 <?php if (isset($mesError)) echo $mesError.'<hr/>'; ?>
-                <a href="inscription.php">Vous n'avez pas de compte, inscrivez-vous !</a>
             </div>
         </div>
 
