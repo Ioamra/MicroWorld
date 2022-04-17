@@ -10,6 +10,7 @@ if (isset($_GET['action'])) {
 
         if ($action = 'getProduitByCategorie') {
 
+            //! Ajouter la moyenne des avis et l'ajouter dans les differents datatables (pour le tri)
             $managerProduit = new ProduitManager($bdd);
             $managerImageProduit = new ImageProduitManager($bdd);
             
@@ -21,8 +22,15 @@ if (isset($_GET['action'])) {
                     $list[$i]['img'] = $cheminImg;
                 }
             }
-            // $list = '{"data":'.json_encode($list).'}';
             echo json_encode($list);
         }
     }
+    // if (isset($_GET['idProduit'])) {
+    //     $idProduit = $_GET['idProduit'];
+    //     if ($action = 'getProduitById') {
+    //         $managerProduit = new ProduitManager($bdd);
+    //         $managerImageProduit = new ImageProduitManager($bdd);
+    //         $list = $managerProduit->get($idProduit);
+    //     }
+    // }
 }

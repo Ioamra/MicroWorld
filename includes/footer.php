@@ -1,3 +1,9 @@
+<footer class="text-center">
+    Mail : iom.monchau@gmail.com 
+    <br>
+    © Fait par Ioamra Monchau
+</footer>
+
 <script type="text/javascript">
 
 //* Gestion navbar page active 

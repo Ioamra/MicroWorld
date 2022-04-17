@@ -4,13 +4,26 @@
 <head>
 	<title>MicroWorld</title>
 	<?php require_once "includes/head.php"; ?>
+    <script src="assets/js/casque-audio.js"></script>
 </head>
-	<body>
+	<body class="body-bg-grey">
 		<?php
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
 		?>
-		
+		<div class="box-produit">
+			<h1 class="text-center pb-4">Casque audio</h1>
+			<table id="datatable" class="table table-striped">
+				<thead>
+					<tr>
+						<th class="no-sort"></th>
+						<th>Nom</th>
+						<th class="no-sort">Description</th>
+						<th>Prix</th>
+					</tr>
+				</thead>
+			</table>
+		</div>
 
 		<?php require_once "includes/footer.php"; ?>
 	</body>

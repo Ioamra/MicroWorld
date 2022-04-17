@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand ps-5" href="index.php">Logo</a>
+        <a class="navbar-brand ps-2" href="index.php">MicroWorld</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#idDeLaCible">
             <span class="navbar-toggler-icon"></span>
         </button>

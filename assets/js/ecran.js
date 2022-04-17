@@ -4,7 +4,7 @@ $(function(){
 });
 
 async function getProduit() {
-    const result = await fetch('api.php?action=getProduitByCategorie&idCategorie=1');
+    const result = await fetch('api.php?action=getProduitByCategorie&idCategorie=4');
     let res = await result.json();
     $('#datatable').DataTable({
         data: res,
