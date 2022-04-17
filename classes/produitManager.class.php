@@ -8,11 +8,13 @@ class ProduitManager{
     }
 
     public function add(Produit $produit) {
-        $req = $this->_db->prepare('INSERT INTO produit (nom, prix, idCategorie, descriptionProduit, dispo) VALUES (:nom, :prix, :idCategorie, :descriptionProduit, :dispo)');
+        $req = $this->_db->prepare('INSERT INTO produit (nom, prix, idCategorie, descriptionProduit, caracteristique, dispo) 
+        VALUES (:nom, :prix, :idCategorie, :descriptionProduit, :caracteristique, :dispo)');
         $req->bindValue(':nom', $produit->getNom());
         $req->bindValue(':prix', $produit->getPrix());
         $req->bindValue(':idCategorie', $produit->getIdCategorie());
         $req->bindValue(':descriptionProduit', $produit->getDescriptionProduit());
+        $req->bindValue(':caracteristique', $produit->getCaracteristique());
         $req->bindValue(':dispo', $produit->getDispo());
         $req->execute();
     }
@@ -22,13 +24,13 @@ class ProduitManager{
     }
 
     public function get($idProduit) {
-		$req = $this->_db->query('SELECT nom, prix, idCategorie, descriptionProduit, dispo FROM produit Where idProduit = '.$idProduit);
+		$req = $this->_db->query('SELECT nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where idProduit = '.$idProduit);
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 		return new Produit($donnees);
     }
 
     public function getByCategorie($idCategorie) {
-		$req = $this->_db->query('SELECT idProduit, nom, prix, idCategorie, descriptionProduit, dispo FROM produit Where idCategorie = '.$idCategorie);
+		$req = $this->_db->query('SELECT idProduit, nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where idCategorie = '.$idCategorie);
 		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($donnees as $i => $val) {
             $donnees[$i]['descriptionProduit'] = stripslashes($donnees[$i]['descriptionProduit']);
@@ -37,7 +39,7 @@ class ProduitManager{
     }
 
     public function getByNom($nom) {
-		$req = $this->_db->prepare("SELECT idProduit, nom, prix, idCategorie, descriptionProduit, dispo FROM produit Where nom = :nom");
+		$req = $this->_db->prepare("SELECT idProduit, nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where nom = :nom");
         $req->bindValue(':nom', $nom);
         $req->execute();
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);

@@ -5,6 +5,7 @@ class Produit {
     public $prix;
     public $idCategorie;
     public $descriptionProduit;
+    public $caracteristique;
     public $dispo;
 
     function __construct(array $donnees) {
@@ -41,6 +42,10 @@ class Produit {
         return $this->descriptionProduit;
     }
 
+    public function getCaracteristique() {
+        return $this->caracteristique;
+    }
+
     public function getDispo() {
         return $this->dispo;
     }
@@ -64,6 +69,10 @@ class Produit {
 
     public function setDescriptionProduit($description_produit) {
         $this->descriptionProduit = $description_produit;
+    }
+
+    public function setCaracteristique($caracteristique) {
+        $this->caracteristique = $caracteristique;
     }
 
     public function setDispo($dispo_produit) {

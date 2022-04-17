@@ -4,7 +4,7 @@
 		<title>Inscription</title>
         <?php require_once "includes/head.php"; ?>
 	</head>	
-	<body>
+	<body class="body-bg-grey">
     <?php
     require_once "includes/autoload.php";
     require_once "includes/nav.php";
@@ -38,48 +38,46 @@
     }
 
     ?>
-        <div class="box-perso">
-            <div class="text-center">
-                <form method="post">
-                    <h1 class="pb-4">Inscription</h1>
-                    <div class="mb-3">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" id="nom" name="nom" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" id="prenom" name="prenom" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="pseudo" class="form-label">Pseudo</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="mail" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" id="mail" name="mail" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="tel" class="form-label">Telephone</label>
-                        <input type="tel" class="form-control" id="tel" name="tel" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="adress" class="form-label">Adresse</label>
-                        <input type="text" class="form-control" id="adress" name="adress" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="mdp1" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="mdp1" name="mdp1" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="mdp2" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" id="mdp2" name="mdp2" required>
-                    </div>
-                    <button type="submit" name="submit" class="btn btn-primary">Se connecter</button>
-                </form>
-                <hr/>
-                <?php if (isset($mesError)) echo $mesError.'<hr/>'; ?>
-                <a href="connexion.php">Vous avez déjà un compte, connectez-vous !</a>
-            </div>
+        <div class="box-perso text-center">
+            <form method="post">
+                <h1 class="pb-4">Inscription</h1>
+                <div class="mb-3">
+                    <label for="nom" class="form-label">Nom</label>
+                    <input type="text" class="form-control" id="nom" name="nom" required>
+                </div>
+                <div class="mb-3">
+                    <label for="prenom" class="form-label">Prenom</label>
+                    <input type="text" class="form-control" id="prenom" name="prenom" required>
+                </div>
+                <div class="mb-3">
+                    <label for="pseudo" class="form-label">Pseudo</label>
+                    <input type="text" class="form-control" id="pseudo" name="pseudo" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mail" class="form-label">Adresse Email</label>
+                    <input type="email" class="form-control" id="mail" name="mail" required>
+                </div>
+                <div class="mb-3">
+                    <label for="tel" class="form-label">Telephone</label>
+                    <input type="tel" class="form-control" id="tel" name="tel" required>
+                </div>
+                <div class="mb-3">
+                    <label for="adress" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="adress" name="adress" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mdp1" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="mdp1" name="mdp1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="mdp2" class="form-label">Mot de passe</label>
+                    <input type="password" class="form-control" id="mdp2" name="mdp2" required>
+                </div>
+                <button type="submit" name="submit" class="btn btn-primary">Se connecter</button>
+            </form>
+            <hr/>
+            <?php if (isset($mesError)) echo $mesError.'<hr/>'; ?>
+            <a href="connexion.php">Vous avez déjà un compte, connectez-vous !</a>
         </div>
 
 

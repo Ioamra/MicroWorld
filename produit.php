@@ -31,8 +31,10 @@ if (!empty($_GET['id'])) {
                     ?>
                     <div class="row">
                     <?php
-                    foreach ($infoImage as $val) {
-                        echo '<div class="col" role="button" onclick="switchImgProduit('."'".$val['cheminImage']."'".')"><img src="'.$val['cheminImage'].'" style="height:auto; width:100%;"></div>';
+                    if (count($infoImage) > 1) {
+                        foreach ($infoImage as $val) {
+                            echo '<div class="col" role="button" onclick="switchImgProduit('."'".$val['cheminImage']."'".')"><img src="'.$val['cheminImage'].'" style="height:auto; width:100%;"></div>';
+                        }
                     }
                     ?>
                     </div>
@@ -40,7 +42,7 @@ if (!empty($_GET['id'])) {
                 <div class="col-6">
                     <?php
                     echo '<h3>'.$infoProduit->getNom().'</h3>';
-                    echo '<pre class="p-3">'.$infoProduit->getDescriptionProduit().'</pre>'
+                    echo '<p class="description p-3">'.stripslashes($infoProduit->getDescriptionProduit()).'</p>'
                     ?>
                 </div>
                 <div class="col-2">
@@ -53,6 +55,9 @@ if (!empty($_GET['id'])) {
                     </div>
                 </div>
             </div>
+            <?php
+            echo $infoProduit->getCaracteristique();
+            ?>
         </div>
 
 		<?php require_once "includes/footer.php"; ?>

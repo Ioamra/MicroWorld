@@ -30,7 +30,7 @@ async function getProduit() {
              },
             { 
                 'data': 'descriptionProduit',
-                'render': (data) => data.slice(0,1000)+' ...',
+                'render': (data) => '<div class="description">'+data.slice(0,600)+' ...</div>',
                 'searchable': false
             },
             { 

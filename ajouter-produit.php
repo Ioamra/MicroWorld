@@ -11,7 +11,7 @@
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/ajout-produit.js"></script>
 </head>
-	<body>
+	<body class="body-bg-grey">
 		<?php
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
@@ -22,6 +22,8 @@
 			$description = addslashes(htmlspecialchars($_POST['description']));
 			$categorie = htmlspecialchars($_POST['categorie']);
 			$prix = htmlspecialchars($_POST['prix']);
+			$caracteristique = $_POST['caracteristique'];
+
 			if (!empty($_FILES['img1']['name'])) {
 				$img1 = $_FILES['img1'];
 				$ext_img1 = ".".strtolower(substr(strrchr($_FILES['img1']['name'], "."), 1));
@@ -73,6 +75,7 @@
 						"Prix" => (int)$prix,
 						"IdCategorie" => (int)$categorie,
 						"DescriptionProduit" => $description,
+						"Caracteristique" => $caracteristique,
 						"Dispo" => 0
 					])
 				);
@@ -149,6 +152,10 @@
 					<textarea class="w-100 form-control" name="description" id="description" rows="10"></textarea>
 				</div>
 				<div class="mb-3">
+					<label for="caracteristique" class="form-label">Caracteristique</label>
+					<textarea class="w-100 form-control" name="caracteristique" id="caracteristique" rows="30"></textarea>
+				</div>
+				<div class="mb-3">
 					<label for="categorie" class="form-label">Categorie</label>
 					<select class="form-select" name="categorie" id="categorie">
 						<?php
@@ -196,7 +203,7 @@
 					</div>
 
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary mb-5">Ajouter le produit</button>
+                <button type="submit" name="submit" class="btn btn-primary">Ajouter le produit</button>
             </form>
         </div>
 

@@ -1,16 +1,17 @@
 .box-perso {
-    padding-top: 80px;
-    width: 40%;
-    margin: auto;
+    width: 60%;
+    margin: 100px auto 60px auto;
+    padding: 40px 60px 40px 60px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 18px;
 }
 
 .box-produit {
-    margin-top: 100px;
-    padding: 40px 60px 40px 60px;
     width: 80%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 100px auto 60px auto;
+    padding: 40px 60px 40px 60px;
     background-color: rgb(255, 255, 255);
+    border-radius: 18px;
 }
 
 .image-produit-upload>input {
@@ -27,4 +28,9 @@ footer {
 
 .body-bg-grey {
     background-color:RGB(239, 239, 238);
+}
+
+.description {
+    font-size: 15px;
+    white-space: pre-wrap;
 }
