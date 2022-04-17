@@ -7,3 +7,9 @@
 .image-produit-upload>input {
     display: none;
   }
+
+.datatable-produit {
+    padding-top: 75px;
+    width: 80%;
+    margin: auto;
+  }

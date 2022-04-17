@@ -20,8 +20,14 @@ class ImageProduitManager{
 
     public function get($idProduit) {
 		$req = $this->_db->query('SELECT cheminImage FROM image_produit Where idProduit = '.$idProduit);
+		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+		return $donnees;
+    }
+
+    public function getOne($idProduit) {
+		$req = $this->_db->query("SELECT cheminImage FROM image_produit Where idProduit = $idProduit");
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
-		return new ImageProduit($donnees);
+		return $donnees;
     }
 
     public function setDB(PDO $db) {

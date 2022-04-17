@@ -11,9 +11,23 @@
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
 		?>
-		<div id="datatable' class="box-perso">
+		<div class="datatable-produit">
+			<table id="datatable" class="">
+				<thead>
+					<tr>
+						<th>Nom</th>
+						<th>Description</th>
+						<th>Prix</th>
+						<!-- <th>img1</th>
+						<th>img2</th>
+						<th>img3</th>
+						<th>img4</th>
+						<th>img5</th> -->
+					</tr>
+				</thead>
+			</table>
 
-        </div>
+		</div>
 
 		<?php require_once "includes/footer.php"; ?>
 	</body>

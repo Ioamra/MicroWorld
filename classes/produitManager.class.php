@@ -28,9 +28,12 @@ class ProduitManager{
     }
 
     public function getByCategorie($idCategorie) {
-		$req = $this->_db->query('SELECT idProduit, nom, prix, descriptionProduit, dispo FROM produit Where idCategorie = '.$idCategorie);
-		$donnees = $req->fetch(PDO::FETCH_ASSOC);
-		return new Produit($donnees);
+		$req = $this->_db->query('SELECT idProduit, nom, prix, idCategorie, descriptionProduit, dispo FROM produit Where idCategorie = '.$idCategorie);
+		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($donnees as $i => $val) {
+            $donnees[$i]['descriptionProduit'] = stripslashes($donnees[$i]['descriptionProduit']);
+        }
+        return $donnees;
     }
 
     public function getByNom($nom) {
