@@ -22,13 +22,13 @@
             $manager = new ClientManager($bdd);
 			$mesError = $manager->inscription(
                 new Client([
-                    "Nom" => "$nom",
-                    "Prenom" => "$prenom",
-                    "Pseudo" => "$pseudo",
-				    "Mail" => "$mail",
-                    "Telephone" => "$tel",
-                    "Adresse" => "$adress",
-				    "Mdp" => "$mdp"
+                    "Nom" => $nom,
+                    "Prenom" => $prenom,
+                    "Pseudo" => $pseudo,
+				    "Mail" => $mail,
+                    "Telephone" => $tel,
+                    "Adresse" => $adress,
+				    "Mdp" => $mdp
 			    ])
             );
 

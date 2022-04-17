@@ -1,11 +1,18 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<!-- Bootstrap css -->
+<!-- Bootstrap -->
 <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" href="assets/css/main.css">
-<!-- Bootstrap scripts -->
 <script src="assets/js/bootstrap.min.js"></script>
+
 <!-- Jquey -->
 <script src="assets/js/jquery.js"></script>
-<!-- Perso -->
+
+<!-- Datatables -->
+<link rel="stylesheet" type="text/css" href="DataTables/datatables.min.css"/>
+<script type="text/javascript" src="DataTables/datatables.min.js"></script>
+
+<!-- CSS -->
+<link rel="stylesheet" href="assets/css/main.css">
+
+<!-- JS -->
 <script src="assets/js/main.js"></script>

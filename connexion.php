@@ -16,8 +16,8 @@
 			$manager = new ClientManager($bdd);
 			$connexionOk = $manager->connexion(
                 new Client([
-				    "Mail" => "$mail",
-				    "Mdp" => "$mdp"
+				    "Mail" => $mail,
+				    "Mdp" => $mdp
 			    ])
             );
             if ($connexionOk == false) $mesError = "Adresse e-mail ou mot de passe invalide.";
@@ -35,7 +35,7 @@
                         <label for="mdp" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control" id="mdp" name="mdp" required>
                     </div>
-                    <button type="submit" class="btn btn-primary">Se connecter</button>
+                    <button type="submit" name="submit" class="btn btn-primary">Se connecter</button>
                 </form>
                 <hr/>
                 <?php if (isset($mesError)) echo $mesError.'<hr/>'; ?>

@@ -1,5 +1,5 @@
 <?php
-class Commande {
+class ImageProduit {
     public $idProduit;
     public $cheminImage;
 

@@ -8,12 +8,11 @@ class ProduitManager{
     }
 
     public function add(Produit $produit) {
-        $req = $this->_db->prepare('INSERT INTO produit (nom, prix, idCategorie, description, dispo) 
-                                    VALUES (:nom, :prix, :idCategorie, :description, :dispo)');
+        $req = $this->_db->prepare('INSERT INTO produit (nom, prix, idCategorie, descriptionProduit, dispo) VALUES (:nom, :prix, :idCategorie, :descriptionProduit, :dispo)');
         $req->bindValue(':nom', $produit->getNom());
         $req->bindValue(':prix', $produit->getPrix());
-        $req->bindValue(':idCategorie', $produit->getCategorie());
-        $req->bindValue(':description', $produit->getDescription());
+        $req->bindValue(':idCategorie', $produit->getIdCategorie());
+        $req->bindValue(':descriptionProduit', $produit->getDescriptionProduit());
         $req->bindValue(':dispo', $produit->getDispo());
         $req->execute();
     }
@@ -23,13 +22,21 @@ class ProduitManager{
     }
 
     public function get($idProduit) {
-		$req = $this->_db->query('SELECT nom, prix, idCategorie	description	dispo FROM produit Where idProduit = '.$idProduit);
+		$req = $this->_db->query('SELECT nom, prix, idCategorie, descriptionProduit, dispo FROM produit Where idProduit = '.$idProduit);
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 		return new Produit($donnees);
     }
 
     public function getByCategorie($idCategorie) {
-		$req = $this->_db->query('SELECT idProduit, nom, prix, description, dispo FROM produit Where idCategorie = '.$idCategorie);
+		$req = $this->_db->query('SELECT idProduit, nom, prix, descriptionProduit, dispo FROM produit Where idCategorie = '.$idCategorie);
+		$donnees = $req->fetch(PDO::FETCH_ASSOC);
+		return new Produit($donnees);
+    }
+
+    public function getByNom($nom) {
+		$req = $this->_db->prepare("SELECT idProduit, nom, prix, idCategorie, descriptionProduit, dispo FROM produit Where nom = :nom");
+        $req->bindValue(':nom', $nom);
+        $req->execute();
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 		return new Produit($donnees);
     }

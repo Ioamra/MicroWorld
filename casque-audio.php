@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,9 +9,8 @@ session_start();
 		<?php
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
-
 		?>
-
+		
 
 		<?php require_once "includes/footer.php"; ?>
 	</body>
