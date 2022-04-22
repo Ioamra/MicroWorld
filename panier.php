@@ -6,20 +6,16 @@ session_start();
 <head>
 	<title>MicroWorld</title>
 	<?php require_once "includes/head.php"; ?>
+    <script src="assets/js/panier.js"></script>
 </head>
-	<body>
+	<body class="body-bg-grey">
 		<?php
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
-
 		?>
-
-<!-- <script>
-
-let panier = new Panier(); 
-panier.add({id:2,nom:
-                        ',prix:'.$infoProduit->getPrix().',cheminImage:'.$infoImage[0]['cheminImage'].'})
-</script> -->
+        <div class="box-perso text-center" id="box-panier">
+            
+        </div>
 
 		<?php require_once "includes/footer.php"; ?>
 	</body>

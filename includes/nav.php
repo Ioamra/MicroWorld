@@ -24,6 +24,9 @@
                         <li><a class="dropdown-item" href="casque-audio.php">Casque audio</a></li>
                     </ul>
                 </li>
+                <li class="nav-item mx-2">
+                    <a class="nav-link" href="panier.php">Panier</a>
+                </li>
                 <?php 
                 if (isset($_SESSION['admin'])) { 
                 ?>

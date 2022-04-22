@@ -1,6 +1,5 @@
 $(function(){
     getProduit();
-
 });
 
 async function getProduit() {

@@ -7,7 +7,7 @@ class Panier {
             this.panier = JSON.parse(panier);
         }
     }
-
+    
     save() {
         localStorage.setItem("panier", JSON.stringify(this.panier));
     }
@@ -28,7 +28,7 @@ class Panier {
         this.save()
     }
 
-    changeQte(produit, qte) {
+    ajoutQte(produit, qte) {
         let produitExist = this.panier.find((p) => p.id == produit.id);
         if (produitExist != undefined) {
             produitExist.qte += qte;
@@ -56,5 +56,10 @@ class Panier {
         return prix;
     }
 }
+//* Pour l'utilisation
 // let panier = new Panier();
-// panier.add({id:"25",prix:"850"})
+// panier.add({id:"25",prix:"850"});
+// panier.remove({id:"25"});
+// panier.ajoutQte({id:"25"},7);
+// panier.getNbProduit();
+// panier.getPrixTotal();

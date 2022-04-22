@@ -19,13 +19,10 @@ if (!empty($_GET['id'])) {
         $managerImageProduit = new ImageProduitManager($bdd);
         $infoProduit = $managerProduit->get($id);
         $infoImage = $managerImageProduit->get($id);
-        // echo '<br><br><br><br>';
-        // var_dump($infoProduit);
-        // var_dump($infoImage)
 		?>
 		<div class="box-produit">
-            <div class="row">
-                <div class="col-4">
+            <div class="row row-cols-1">
+                <div class="col col-lg-4">
                     <?php
                     echo '<a href="'.$infoImage[0]['cheminImage'].'" target="_blank"><img id="img-principal" src="'.$infoImage[0]['cheminImage'].'" style="height:auto; width:100%;"></a>';
                     ?>
@@ -39,19 +36,22 @@ if (!empty($_GET['id'])) {
                     ?>
                     </div>
                 </div>
-                <div class="col-6">
+                <div class="col col-lg-6">
                     <?php
-                    echo '<h3>'.$infoProduit->getNom().'</h3>';
+                    echo '<h3>'.stripslashes($infoProduit->getNom()).'</h3>';
                     echo '<p class="description p-3">'.stripslashes($infoProduit->getDescriptionProduit()).'</p>'
                     ?>
                 </div>
-                <div class="col-2">
+                <div class="col col-lg-2">
                     <div class="card m-2 p-3">
                     <?php
                         echo '<h3 class="text-center">'.$infoProduit->getPrix().'€</h3>';
                     ?>
                     <p class="text-center">Livraison gratuite</p>
-                    <button class="btn btn-primary">Ajouter au panier</button>
+                    <?php
+                    echo '<button class="btn btn-primary" onclick="let panier = new Panier(); panier.add({id:'.$id.',nom:'."'".substr(stripslashes($infoProduit->getNom()),0,20)."...'".
+                        ',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'});">Ajouter au panier</button>';
+                    ?>
                     </div>
                 </div>
             </div>

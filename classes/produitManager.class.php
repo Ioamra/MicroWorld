@@ -33,6 +33,7 @@ class ProduitManager{
 		$req = $this->_db->query('SELECT idProduit, nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where idCategorie = '.$idCategorie);
 		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($donnees as $i => $val) {
+            $donnees[$i]['nom'] = stripslashes($donnees[$i]['nom']);
             $donnees[$i]['descriptionProduit'] = stripslashes($donnees[$i]['descriptionProduit']);
         }
         return $donnees;
