@@ -73,7 +73,7 @@
                     <label for="mdp2" class="form-label">Mot de passe</label>
                     <input type="password" class="form-control" id="mdp2" name="mdp2" required>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary">Se connecter</button>
+                <button type="submit" name="submit" class="btn btn-primary">S'inscrire</button>
             </form>
             <hr/>
             <?php if (isset($mesError)) echo $mesError.'<hr/>'; ?>

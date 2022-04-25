@@ -37,14 +37,19 @@ class ClientManager{
         $req->bindValue(':mdp', $client->getMdp());
         $req->execute();
 
+        $req = $this->_db->prepare('SELECT * FROM client WHERE pseudo = :pseudo');
+        $req->bindValue(':pseudo', $client->getPseudo());
+        $req->execute();
+        $data = $req->fetch(PDO::FETCH_ASSOC);
+
         session_start();
-        $_SESSION['id'] = $id;
-        $_SESSION['nom'] = $nom;
-        $_SESSION['prenom'] = $prenom;
-        $_SESSION['pseudo'] = $pseudo;
-        $_SESSION['mail'] = $mail;
-        $_SESSION['telephone'] = $telephone;
-        $_SESSION['adresse'] = $adresse;
+        $_SESSION['id'] = $data['idClient'];
+        $_SESSION['nom'] = $client->getNom();
+        $_SESSION['prenom'] = $client->getPrenom();
+        $_SESSION['pseudo'] = $client->getPseudo();
+        $_SESSION['mail'] = $client->getMail();
+        $_SESSION['telephone'] = $client->getTelephone();
+        $_SESSION['adresse'] = $client->getAdresse();
         header("location:index.php");
     }
 
