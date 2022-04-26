@@ -16,7 +16,7 @@ $(function(){
             contenu += '<td><img src="'+panier.panier[i].cheminImage+'" style="height:4em; width:auto;"</td>';
             contenu += '<td>'+panier.panier[i].nom+'</td>';
             contenu += '<td>'+panier.panier[i].prix+' €/unité</td>';
-            contenu += '<td><button class="btn btn-outline-secondary m-1" onclick="let panier = new Panier(); panier.ajoutQte({id:'+panier.panier[i].id+'},-1); refreshQte();">-</button>'
+            contenu += '<td><button class="btn btn-outline-secondary m-1" onclick="let panier = new Panier(); panier.ajoutQte({id:'+panier.panier[i].id+'},-1); if(!panier.panier['+i+']){window.location.reload();} if(panier.panier['+i+'].id != '+panier.panier[i].id+'){window.location.reload();} refreshQte();">-</button>'
                     +'<button class="btn btn-outline-secondary m-1" id="qte'+panier.panier[i].id+'">'+panier.panier[i].qte+'</button>'
                     +'<button class="btn btn-outline-secondary m-1" onclick="let panier = new Panier(); panier.ajoutQte({id:'+panier.panier[i].id+'},1); refreshQte();">+</button></td>';
             contenu += '<td id="prixLigne'+panier.panier[i].id+'">'+panier.panier[i].prix*panier.panier[i].qte+' €</td>';
