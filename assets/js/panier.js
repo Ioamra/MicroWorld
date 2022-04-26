@@ -16,8 +16,10 @@ $(function(){
             contenu += '<td><img src="'+panier.panier[i].cheminImage+'" style="height:4em; width:auto;"</td>';
             contenu += '<td>'+panier.panier[i].nom+'</td>';
             contenu += '<td>'+panier.panier[i].prix+' €/unité</td>';
-            contenu += '<td>'+panier.panier[i].qte+' unité</td>';
-            contenu += '<td>'+panier.panier[i].prix*panier.panier[i].qte+' €</td>';
+            contenu += '<td><button class="btn btn-outline-secondary m-1" onclick="let panier = new Panier(); panier.ajoutQte({id:'+panier.panier[i].id+'},-1); refreshQte();">-</button>'
+                    +'<button class="btn btn-outline-secondary m-1" id="qte'+panier.panier[i].id+'">'+panier.panier[i].qte+'</button>'
+                    +'<button class="btn btn-outline-secondary m-1" onclick="let panier = new Panier(); panier.ajoutQte({id:'+panier.panier[i].id+'},1); refreshQte();">+</button></td>';
+            contenu += '<td id="prixLigne'+panier.panier[i].id+'">'+panier.panier[i].prix*panier.panier[i].qte+' €</td>';
             contenu += '</tr>';
         }
         contenu += '<tr>';
@@ -25,7 +27,7 @@ $(function(){
         contenu += '<td></td>';
         contenu += '<td></td>';
         contenu += '<td>TOTAL :</td>';
-        contenu += '<td>'+panier.getPrixTotal()+' €</td>';
+        contenu += '<td id="prixTotal">'+panier.getPrixTotal()+' €</td>';
         contenu += '</tr>';
         contenu += '</tbody></table>';
         contenu += '<br>La livraison est offerte et les colis sont livrés en 2-3 jours ouvrables avec Colissimo.<hr>';
@@ -61,9 +63,20 @@ $(function(){
                     });
             }
         });
+
     
     } else {
         // Si il ni a pas de produit dans le panier
         $("#box-panier").html("<h2>Votre panier est vide.</h2>");
     }
 });
+
+
+function refreshQte() {
+    let panier = new Panier();
+    for (let i = 0; i < panier.panier.length; i++) {
+        $('#qte'+panier.panier[i].id).text(panier.panier[i].qte);
+        $('#prixLigne'+panier.panier[i].id).text(panier.panier[i].prix*panier.panier[i].qte+' €');
+        $('#prixTotal').text(panier.getPrixTotal()+' €');
+    }
+}
