@@ -8,7 +8,7 @@ class CommandeManager{
     }
 
     public function add(Commande $commande) {
-        $req = $this->_db->prepare('INSERT INTO commande (idClient, dateCmde) VALUES (:idClient, :dateCmde)');
+        $req = $this->_db->prepare('INSERT INTO commande (idClient, dateCmde) VALUES ((SELECT idClient FROM client WHERE idClient = :idClient), :dateCmde)');
         $req->bindValue(':idClient', $commande->getIdClient());
         $req->bindValue(':dateCmde', $commande->getDateCmde());
         $req->execute();
@@ -28,6 +28,12 @@ class CommandeManager{
 		$req = $this->_db->query('SELECT idCmde, dateCmde FROM commande Where idClient = '.$idClient);
 		$donnees = $req->fetch(PDO::FETCH_ASSOC);
 		return new Commande($donnees);
+    }
+
+    public function getMaxId() {
+        $req = $this->_db->query('SELECT MAX(idCmde) FROM commande');
+        $donnees = $req->fetch(PDO::FETCH_ASSOC);
+		return $donnees['MAX(idCmde)'];
     }
 
     public function setDB(PDO $db) {

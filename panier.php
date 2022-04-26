@@ -14,7 +14,7 @@ session_start();
 		require_once "includes/nav.php";
 		?>
         <div class="box-perso text-center" id="box-panier">
-            
+
         </div>
 
 		<?php require_once "includes/footer.php"; ?>

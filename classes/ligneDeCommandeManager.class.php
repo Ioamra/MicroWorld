@@ -8,7 +8,8 @@ class LigneDeCommandeManager{
     }
 
     public function add(LigneDeCommande $ligneDeCommande) {
-        $req = $this->_db->prepare('INSERT INTO ligne_de_commande (idCmde, idProduit, qte) VALUES (:idCmde, :idProduit, :qte)');
+        $req = $this->_db->prepare('INSERT INTO ligne_de_commande (idCmde, idProduit, qte) 
+        VALUES ((SELECT idCmde FROM commande WHERE idCmde = :idCmde), (SELECT idProduit FROM produit WHERE idProduit = :idProduit), :qte)');
         $req->bindValue(':idCmde', $ligneDeCommande->getIdCmde());
         $req->bindValue(':idProduit', $ligneDeCommande->getIdProduit());
         $req->bindValue(':qte', $ligneDeCommande->getQte());

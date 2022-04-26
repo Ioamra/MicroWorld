@@ -14,6 +14,11 @@
     border-radius: 18px;
 }
 
+.box-coord-banq {
+    width: 60%;
+    margin: 0px auto 0px auto;
+}
+
 .image-produit-upload>input {
     display: none;
   }

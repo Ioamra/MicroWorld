@@ -47,11 +47,12 @@ if (!empty($_GET['id'])) {
                     <?php
                         echo '<h3 class="text-center">'.$infoProduit->getPrix().'€</h3>';
                     ?>
-                    <p class="text-center">Livraison gratuite</p>
+                    <p class="text-center">Livraison gratuite</p>                
                     <?php
-                    echo '<button class="btn btn-primary" onclick="let panier = new Panier(); panier.add({id:'.$id.',nom:'."'".substr(stripslashes($infoProduit->getNom()),0,20)."...'".
-                        ',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'});">Ajouter au panier</button>';
+                    echo '<button class="btn btn-primary" onclick="let panier = new Panier(); panier.add({id:'.$id.',nom:'."'".substr(stripslashes($infoProduit->getNom()),0,20).
+                        "...'".',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'});">Ajouter au panier</button>';
                     ?>
+
                     </div>
                 </div>
             </div>

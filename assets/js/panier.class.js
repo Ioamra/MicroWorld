@@ -28,6 +28,11 @@ class Panier {
         this.save()
     }
 
+    removeAll() {
+        this.panier = [];
+        this.save();
+    }
+
     ajoutQte(produit, qte) {
         let produitExist = this.panier.find((p) => p.id == produit.id);
         if (produitExist != undefined) {
