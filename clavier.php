@@ -20,6 +20,7 @@
 						<th>Nom</th>
 						<th class="no-sort">Description</th>
 						<th>Prix</th>
+						<th>Note</th>
 					</tr>
 				</thead>
 			</table>

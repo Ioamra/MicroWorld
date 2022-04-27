@@ -25,9 +25,13 @@ class CommandeManager{
     }
 
     public function getByIdClient($idClient) {
-		$req = $this->_db->query('SELECT idCmde, dateCmde FROM commande Where idClient = '.$idClient);
-		$donnees = $req->fetch(PDO::FETCH_ASSOC);
-		return new Commande($donnees);
+		$req = $this->_db->query('SELECT  idCmde, idClient, dateCmde FROM commande Where idClient = '.$idClient);
+		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+        $res = [];
+        foreach ($donnees as $li) {
+            $res[] = new Commande($li);
+        }
+		return $res;
     }
 
     public function getMaxId() {

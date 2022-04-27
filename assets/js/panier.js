@@ -58,7 +58,7 @@ $(function(){
                             alert(data);
                         } else {
                             panier.removeAll();
-                            // changement de page
+                            //!! changement de page
                         }
                     });
             }

@@ -37,6 +37,22 @@ async function getProduit() {
                 'data': 'prix',
                 'render': (data) => '<h3>'+data+'€</h3>',
                 'searchable': false
+            },
+            { 
+                'data': 'note',
+                'render': (data) => {
+                    let roundNote = Math.round(data);
+                    let resNote = '<div class="etoile">';
+                    for (let i = 0; i < roundNote; i++) {
+                        resNote += '★';
+                    }
+                    for (let i = 0; i < 5-roundNote; i++) {
+                        resNote += '☆';
+                    }
+                    resNote += '</div>';
+                    return resNote;
+                },
+                'searchable': false
             }
         ],
         "language": {

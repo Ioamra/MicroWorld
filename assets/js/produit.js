@@ -1,5 +1,6 @@
 $(function(){
-    var panier = new Panier(); 
+    var panier = new Panier();
+
 });
 
 function switchImgProduit(url) {

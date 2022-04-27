@@ -39,3 +39,73 @@ footer {
     font-size: 15px;
     white-space: pre-wrap;
 }
+
+/* Etoile avis client */
+
+/* pour afficher la note */
+.etoile {
+    text-shadow: 0 0 1px black, 0 0 1px black;
+    color: #FFD600;
+    font-size: 28px;
+}
+
+.label-ratio-avis {
+    width: 4em;
+}
+
+.ratio-avis {
+    width: 4em;
+}
+
+.bar-avis {
+    width: 12em;
+    background-color: rgb(190, 190, 190);
+}
+
+.ratio-bar-avis {
+    background-color: rgb(255, 221, 31);
+}
+
+.contenu-avis {
+    font-size: 15px;
+}
+
+/* Pour choisir la note */
+.noteAvis {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center
+}
+
+.noteAvis>input {
+    display: none
+}
+
+.noteAvis>label {
+    text-shadow: 0 0 1px black, 0 0 1px black;
+    position: relative;
+    width: 1em;
+    font-size: 30px;
+    font-weight: 300;
+    color: #FFD600;
+    cursor: pointer
+}
+
+.noteAvis>label::before {
+    content: "★";
+    position: absolute;
+    opacity: 0
+}
+
+.noteAvis>label:hover:before,
+.noteAvis>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.noteAvis>input:checked~label:before {
+    opacity: 1
+}
+
+.noteAvis:hover>input:checked~label:before {
+    opacity: 0.4
+}

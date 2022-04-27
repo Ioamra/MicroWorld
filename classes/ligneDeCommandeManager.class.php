@@ -16,8 +16,12 @@ class LigneDeCommandeManager{
         $req->execute();
     }
 
-    public function delete(LigneDeCommande $ligneDeCommande) {
-        $this->_db->query('DELETE FROM ligne_de_commande WHERE idCmde = '.$ligneDeCommande->getIdCmde());
+    public function verifProduitAchete(LigneDeCommande $ligneDeCommande) {
+        $req = $this->_db->prepare("SELECT idCmde, idProduit FROM ligne_de_commande WHERE idCmde = :idCmde AND idProduit = :idProduit");
+        $req->bindValue(':idCmde', $ligneDeCommande->getIdCmde());
+        $req->bindValue(':idProduit', $ligneDeCommande->getIdProduit());
+        $req->execute();
+        return $req->rowCount();
     }
 
     public function get($idCmde) {
