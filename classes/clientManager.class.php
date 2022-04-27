@@ -57,6 +57,17 @@ class ClientManager{
         $this->_db->query('DELETE FROM client WHERE idClient = '.$client->getIdClient());
     }
 
+    public function verifMdp(Client $client) {
+        $req = $this->_db->prepare('SELECT * FROM client WHERE idClient = :idClient AND mdp = :mdp');
+        $req->bindValue(':idClient', $client->getIdClient());
+        $req->bindValue(':mdp', $client->getMdp());
+        $req->execute();
+        $res = $req->rowCount();
+        if ($res == 1) return true;
+        if ($res == 0) return false;
+
+    }
+
     public function update(Client $client) {
         $req = $this->_db->prepare('UPDATE client SET nom = :nom, prenom = :prenom, pseudo = :pseudo, mail = :mail, telephone = :telephone, adresse = :adresse, mdp = :mdp 
                                     WHERE idClient = :idClient');
@@ -69,6 +80,13 @@ class ClientManager{
         $req->bindValue(':mdp', $client->getMdp());
         $req->bindValue(':idClient', $client->getIdClient());
         $req->execute();
+        $_SESSION['id'] = $client->getIdClient();
+        $_SESSION['nom'] = $client->getNom();
+        $_SESSION['prenom'] = $client->getPrenom();
+        $_SESSION['pseudo'] = $client->getPseudo();
+        $_SESSION['mail'] = $client->getMail();
+        $_SESSION['telephone'] = $client->getTelephone();
+        $_SESSION['adresse'] = $client->getAdresse();
     }
 
     public function get($idClient) {

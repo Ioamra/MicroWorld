@@ -1,5 +1,11 @@
+<script>var co = false;</script>
 <?php
 session_start();
+if (isset($_SESSION['id'])) {
+	?>
+	<script>co = true;</script>
+	<?php
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">

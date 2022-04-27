@@ -38,15 +38,18 @@
                         </ul>
                     </li>
                 <?php 
-                } 
+                }
+                if (isset($_SESSION['id'])) { 
+                    echo '<li class="nav-item"><a class="nav-link" href="profil.php">Profil</a></li>';
+                }
                 ?>
             </ul>
             <ul class="navbar-nav d-flex">
             <?php
                 //* deconnection || connection et inscription
-                    if(isset($_SESSION['id'])){
+                    if (isset($_SESSION['id'])) {
                         echo '<li class="nav-item"><a class="nav-link" href="includes/logout.php">Déconnection</a></li>';
-                    }else{
+                    } else {
                         echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>';
                         echo '<li class="nav-item"><a class="nav-link" href="inscription.php">Inscription</a></li>';
                     }

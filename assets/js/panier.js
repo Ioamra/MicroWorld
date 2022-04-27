@@ -44,7 +44,11 @@ $(function(){
         contenu += '<button class="btn btn-primary mt-4" type="button" id="valider-achat">Valider l\'achat</button>';
         $("#box-panier").html(contenu);
         
-        $('#valider-achat').on('click', function(){
+        $('#valider-achat').on('click', function() {
+            if (co == false) {
+                alert('Vous devez vous connecter pour acheter un produit.');
+                return;
+            }
             if (confirm('Etes-vous sur de vouloir valider cet achat?') == true){
                 let chaine = "";
                 for (let i = 0; i < panier.panier.length; i++) {
