@@ -28,9 +28,11 @@ async function getProduit() {
                     return '<a class="text-decoration-none text-dark" href="produit.php?id='+row.idProduit+'">'+row.nom+'</a>';
                 }
              },
-            { 
+             { 
                 'data': 'descriptionProduit',
-                'render': (data) => data.slice(0,1000)+' ...',
+                'render': (data,type,row,meta) => {
+                    return '<a class="text-decoration-none text-dark description" href="produit.php?id='+row.idProduit+'">'+row.descriptionProduit.slice(0,600)+' ...</a>';
+                },
                 'searchable': false
             },
             { 

@@ -223,7 +223,7 @@ if (!empty($_GET['id'])) {
                                     break;
                             }
                             echo '    <div class="d-inline">'.$li->getTitre().'</div>';
-                            echo '    <div class="card mt-2 p-2 contenu-avis">'.$li->getContenu().'</div>';
+                            echo '    <div class="card mt-2 p-2 description">'.$li->getContenu().'</div>';
                             echo '</div><hr>';
                         }
                     } else {
@@ -249,7 +249,7 @@ if (!empty($_GET['id'])) {
                                     break;
                             }
                             echo '    <div class="d-inline">'.$listeAvis[$i]->getTitre().'</div>';
-                            echo '    <div class="card mt-2 p-2 contenu-avis">'.$listeAvis[$i]->getContenu().'</div>';
+                            echo '    <div class="card mt-2 p-2 description">'.$listeAvis[$i]->getContenu().'</div>';
                             echo '</div><hr>';
                         }
                         echo '<a class="btn m-2" href="produit.php?id='.$_GET['id'].'&avis=tous">Afficher tous les commentaires ></a>';

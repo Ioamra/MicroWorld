@@ -37,7 +37,6 @@ footer {
 
 .description {
     font-size: 15px;
-    white-space: pre-wrap;
 }
 
 /* Etoile avis client */
@@ -64,10 +63,6 @@ footer {
 
 .ratio-bar-avis {
     background-color: rgb(255, 221, 31);
-}
-
-.contenu-avis {
-    font-size: 15px;
 }
 
 /* Pour choisir la note */

@@ -26,8 +26,12 @@ class LigneDeCommandeManager{
 
     public function get($idCmde) {
 		$req = $this->_db->query('SELECT idProduit, qte FROM ligne_de_commande Where idCmde = '.$idCmde);
-		$donnees = $req->fetch(PDO::FETCH_ASSOC);
-		return new LigneDeCommande($donnees);
+		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+        $res = [];
+        foreach ($donnees as $li) {
+            $res[] = new LigneDeCommande($li);
+        }
+		return $res;
     }
 
     public function setDB(PDO $db) {

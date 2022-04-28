@@ -11,7 +11,7 @@ if(empty($_SESSION['id'])){
 	<title>MicroWorld</title>
 	<?php require_once "includes/head.php"; ?>
 </head>
-	<body>
+	<body class="body-bg-grey">
 		<?php
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
@@ -117,7 +117,7 @@ if(empty($_SESSION['id'])){
             </tbody>
           </table>
           <button type="submit" name="submit" class="btn btn-success">Valider les changement</button>
-          <a class="ms-5 text-decoration-none text-dark" href="historique.php<?=$_SESSION['id']?>">Voir l'historique de mes achats.</a>
+          <a class="ms-5 text-decoration-none text-dark" href="historique.php">Voir l'historique de mes achats.</a>
         </div>
     </div>
 </form>
