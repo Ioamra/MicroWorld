@@ -59,23 +59,27 @@ if (!empty($_GET['id'])) {
                 </div>
                 <div class="col col-lg-6">
                     <?php
-                    echo '<h3>'.stripslashes($infoProduit->getNom()).'</h3>';
-                    echo '<p class="description p-3">'.stripslashes($infoProduit->getDescriptionProduit()).'</p>'
+                    echo '<h3>'.$infoProduit->getNom().'</h3>';
+                    echo '<p class="description p-3">'.$infoProduit->getDescriptionProduit().'</p>'
                     ?>
                 </div>
                 <div class="col col-lg-2">
-                    <div class="card m-2 p-3">
                     <?php
-                        echo '<h3 class="text-center">'.$infoProduit->getPrix().'€</h3>';
-                    ?>
-                    <p class="text-center">Livraison gratuite</p>                
-                    <?php
-                    echo '<button class="btn btn-primary" onclick="let panier = new Panier(); panier.add({id:'.$id.',nom:'."'".substr(stripslashes($infoProduit->getNom()),0,20).
-                        "...'".',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'}); if (confirm('."'".'Le produit à été ajouter au panier. Voulez vous voir votre panier?'."'".') == true){window.location.href='."'".'panier.php'."'".';}">Ajouter au panier</button>';
-                    ?>
+                        if ($infoProduit->getDispo() == 1) {
+                            echo '<div class="card m-2 p-3">';
+                            echo '<h3 class="text-center">'.$infoProduit->getPrix().' €</h3>';
+                            echo '<p class="text-center">Livraison gratuite</p>';
+                            echo '<button class="btn btn-primary" onclick="let panier = new Panier(); panier.add({id:'.$id.',nom:'."'".substr(stripslashes($infoProduit->getNom()),0,20).
+                                "...'".',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'}); if (confirm('."'".'Le produit à été ajouter au panier. Voulez vous voir votre panier?'."'".') == true){window.location.href='."'".'panier.php'."'".';}">Ajouter au panier</button>';
+                            echo '</div>';
+                        } else {
+                            echo '<div class="card m-2 p-3">';
+                            echo '<h3 class="text-center">'.$infoProduit->getPrix().' €</h3>';
+                            echo '<p class="text-center btn btn-danger">Produit indisponible</p>';
+                            echo '</div>';
+                        }
 
-                    </div>
-                    <?php //* Si le client a déjè acheter le produit => possibilité de poser un avis
+                    //* Si le client a déjè acheter le produit => possibilité de poser un avis
                     if (isset($_SESSION['id'])) {
                         $posibilitePoseAvis = false;
                         $managerCommande = new CommandeManager($bdd);

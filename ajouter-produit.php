@@ -76,7 +76,7 @@
 						"IdCategorie" => (int)$categorie,
 						"DescriptionProduit" => $description,
 						"Caracteristique" => $caracteristique,
-						"Dispo" => 0
+						"Dispo" => 1
 					])
 				);
 				$id = $managerProduit->getByNom($nom)->idProduit;
@@ -175,19 +175,19 @@
 				<div class="image-produit-upload mb-3">
 					<label class="form-label">Images (une image minimum)</label><br>
 					<label for="img1">
-						<img src="assets/img/icon-download-img.png"/>
+						<img src="assets/img/icon-download-img.png" role="button"/>
 					</label>
 					<label for="img2">
-						<img src="assets/img/icon-download-img.png"/>
+						<img src="assets/img/icon-download-img.png" role="button"/>
 					</label>
 					<label for="img3">
-						<img src="assets/img/icon-download-img.png"/>
+						<img src="assets/img/icon-download-img.png" role="button"/>
 					</label>
 					<label for="img4">
-						<img src="assets/img/icon-download-img.png"/>
+						<img src="assets/img/icon-download-img.png" role="button"/>
 					</label>
 					<label for="img5">
-						<img src="assets/img/icon-download-img.png"/>
+						<img src="assets/img/icon-download-img.png" role="button"/>
 					</label>
                     <input class="form-control" type="file" name="img1" id='img1' onchange="loadFile(1, event)" required>
                     <input class="form-control" type="file" name="img2" id='img2' onchange="loadFile(2, event)">

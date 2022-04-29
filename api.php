@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "includes/autoload.php";
+
 if (isset($_GET['action'])) {
 
     $action = $_GET['action'];
@@ -46,5 +47,10 @@ if (isset($_GET['action'])) {
             $list[$i]['note'] = round($managerAvisClient->getMoyenne($val['idProduit']), 2);
         }
         echo json_encode($list);
+    }
+
+    if ($action == 'switchDispo' && isset($_GET['idProduit'])) {
+        $managerProduit = new ProduitManager($bdd);
+        $managerProduit->switchDispo($_GET['idProduit']);
     }
 }

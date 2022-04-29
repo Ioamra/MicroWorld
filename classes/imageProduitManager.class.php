@@ -30,6 +30,26 @@ class ImageProduitManager{
 		return $donnees['cheminImage'];
     }
 
+    public function update(ImageProduit $imageProduit) {
+        $img = substr($imageProduit->getCheminImage(), 0, strpos($imageProduit->getCheminImage(), '.'));
+        $req = $this->_db->prepare("UPDATE image_produit SET idProduit = :idProduit, cheminImage = :cheminImage WHERE idProduit = :idProduit AND cheminImage LIKE '$img%'");
+        $req->bindValue(':idProduit', $imageProduit->getIdProduit());
+        $req->bindValue(':cheminImage', $imageProduit->getCheminImage());
+        $req->execute();
+    }
+
+    public function verif(ImageProduit $imageProduit) {
+        $img = substr($imageProduit->getCheminImage(), 0, strpos($imageProduit->getCheminImage(), '.'));
+		$req = $this->_db->prepare("SELECT * FROM image_produit Where idProduit = :idProduit AND cheminImage LIKE '$img%'");
+        $req->bindValue(':idProduit', $imageProduit->getIdProduit());
+        $req->execute();
+        if ($req->rowCount() == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public function setDB(PDO $db) {
         $this->_db = $db;
     }
