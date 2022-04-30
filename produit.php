@@ -47,15 +47,16 @@ if (!empty($_GET['id'])) {
                     <?php
                     echo '<a href="'.$infoImage[0]['cheminImage'].'" target="_blank"><img id="img-principal" src="'.$infoImage[0]['cheminImage'].'" style="height:auto; width:100%;"></a>';
                     ?>
-                    <div class="row">
                     <?php
                     if (count($infoImage) > 1) {
+                        echo '<br><br>';
+                        echo '<div class="row">';
                         foreach ($infoImage as $val) {
                             echo '<div class="col" role="button" onclick="switchImgProduit('."'".$val['cheminImage']."'".')"><img src="'.$val['cheminImage'].'" style="height:auto; width:100%;"></div>';
                         }
+                        echo '</div>';
                     }
                     ?>
-                    </div>
                 </div>
                 <div class="col col-lg-6">
                     <?php

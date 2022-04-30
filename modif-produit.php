@@ -86,7 +86,7 @@
 												])
 											);
 										}
-										move_uploaded_file($_FILES['img'.$produit->getIdProduit()]['tmp_name'], 'image-produit/'.$produit->getIdProduit().'/img'.($i+1).$ext_img);
+										move_uploaded_file($_FILES['img'.($i+1).$produit->getIdProduit()]['tmp_name'], 'image-produit/'.$produit->getIdProduit().'/img'.($i+1).$ext_img);
 									}
 								}
 							}
