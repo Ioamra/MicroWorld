@@ -70,7 +70,7 @@ if (!empty($_GET['id'])) {
                             echo '<h3 class="text-center">'.$infoProduit->getPrix().' €</h3>';
                             echo '<p class="text-center">Livraison gratuite</p>';
                             echo '<button class="btn btn-primary" onclick="let panier = new Panier(); panier.add({id:'.$id.',nom:'."'".substr(stripslashes($infoProduit->getNom()),0,20).
-                                "...'".',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'}); if (confirm('."'".'Le produit à été ajouter au panier. Voulez vous voir votre panier?'."'".') == true){window.location.href='."'".'panier.php'."'".';}">Ajouter au panier</button>';
+                                "...'".',prix:'.$infoProduit->getPrix().',cheminImage:'."'".$infoImage[0]['cheminImage']."'".'}); actuNavPanier(); if (confirm('."'".'Le produit à été ajouter au panier. Voulez vous voir votre panier?'."'".') == true){window.location.href='."'".'panier.php'."'".';}">Ajouter au panier</button>';
                             echo '</div>';
                         } else {
                             echo '<div class="card m-2 p-3">';
