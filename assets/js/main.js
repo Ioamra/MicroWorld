@@ -5,7 +5,6 @@ $(function() {
 
 function actuNavPanier() {
     let panier = new Panier();
-    console.log(panier.getNbProduit());
     if (panier.getNbProduit() == 0) {
         $('#nav-panier').addClass('d-none');
     } else {

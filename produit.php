@@ -107,10 +107,10 @@ if (!empty($_GET['id'])) {
                                         <input type="radio" name="noteAvis" value="1" id="1" /><label for="1">☆</label>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-center">
-                                        <input type="text" name="titreAvis" id="titreAvis" class="w-100" required>
+                                        <input type="text" name="titreAvis" id="titreAvis" class="w-100" pattern=".{0,60}" required>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-center">
-                                        <textarea name="contenuAvis" id="contenuAvis" class="w-100" required></textarea>
+                                        <textarea name="contenuAvis" id="contenuAvis" class="w-100" pattern=".{0,800}" required></textarea>
                                     </div>
                                     <div class="mb-3 d-flex justify-content-center">
                                         <button class="btn btn-primary" name="submitAvis">valider</button>

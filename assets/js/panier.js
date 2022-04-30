@@ -56,14 +56,9 @@ $(function(){
                     chaine += '&qteProduit[]='+panier.panier[i].qte;
                 }
                 fetch('api.php?action=validAchat'+chaine)
-                    .then(res => res.text())
-                    .then((data) => {
-                        if (data) {
-                            alert(data);
-                        } else {
-                            panier.removeAll();
-                            //!! changement de page
-                        }
+                    .then(res =>  {
+                        panier.removeAll();
+                        window.location.href = "historique.php";
                     });
             }
         });
