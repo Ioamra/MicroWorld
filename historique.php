@@ -18,7 +18,7 @@ if(empty($_SESSION['id'])){
 
         $managerCommande = new CommandeManager($bdd);
         $managerLigneDeCommande = new LigneDeCommandeManager($bdd);
-        $managerProduit = new ProduitManager($bdd);
+        $managerHistoriqueProduit = new HistoriqueProduitManager($bdd);
         $managerImageProduit = new ImageProduitManager($bdd);
         $listCmde = $managerCommande->getByIdClient($_SESSION['id']);
         $prixTotal = 0;
@@ -44,7 +44,7 @@ if(empty($_SESSION['id'])){
             echo '</tr>';
             $listeLigneCmde = $managerLigneDeCommande->get($li->getIdCmde());
             foreach ($listeLigneCmde as $liLigne) {
-                $infoProduit = $managerProduit->get($liLigne->getIdProduit());
+                $infoProduit = $managerHistoriqueProduit->getAncienProduit($liLigne->getIdProduit(), $li->getDateCmde());
                 $img = $managerImageProduit->getOne($liLigne->getIdProduit());
                 echo '<tr role=button onclick="window.location.href='."'".'produit.php?id='.$liLigne->getIdProduit()."'".'">';
                 echo '  <td class="p-2"><img style="height:4em; width:auto;" src="'.$img.'" /></td>';

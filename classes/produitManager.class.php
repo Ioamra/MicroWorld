@@ -72,6 +72,11 @@ class ProduitManager{
 		return $res;
     }
 
+    public function count() {
+		$req = $this->_db->query("SELECT * FROM produit");
+        return $req->rowCount();
+    }
+
     public function switchDispo($idProduit) {
 		$req = $this->_db->query("SELECT dispo FROM produit WHERE idProduit = $idProduit");
         $dispo = $req->fetch(PDO::FETCH_ASSOC)['dispo'];

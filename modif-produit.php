@@ -11,7 +11,7 @@
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/modif-produit.js"></script>
 </head>
-	<body>
+	<body class="body-bg-grey">
 		<?php
 		require_once "includes/autoload.php";
 		require_once "includes/nav.php";
@@ -25,8 +25,10 @@
 		} else {
 			$page = 1;
 		}
+		$nbProduit = $managerProduit->count();
 		$limit = 10;
 		$offset = ($page - 1) * $limit;
+		$nbPage = ceil($nbProduit / $limit);
 		$listProduit = $managerProduit->getLimitOffset($limit, $offset);
 		?>
 		<div class="box-produit">
@@ -41,15 +43,15 @@
 							$prix = htmlspecialchars($_POST['prix'.$produit->getIdProduit()]);
 							$caracteristique = $_POST['caracteristique'.$produit->getIdProduit()];
 
-							// $managerProduit->update(
-							// 	new Produit([
-							// 		"IdProduit" => $produit->getIdProduit(),
-							// 		"Nom" => $nom,
-							// 		"Prix" => (int)$prix,
-							// 		"DescriptionProduit" => $description,
-							// 		"Caracteristique" => $caracteristique,
-							// 	])
-							// );
+							$managerProduit->update(
+								new Produit([
+									"IdProduit" => $produit->getIdProduit(),
+									"Nom" => $nom,
+									"Prix" => (int)$prix,
+									"DescriptionProduit" => $description,
+									"Caracteristique" => $caracteristique,
+								])
+							);
 							
 							for ($i=0; $i < 5; $i++) { 
 								if (isset($_FILES['img'.($i+1).$produit->getIdProduit()])) {
@@ -182,6 +184,44 @@
 			echo '</div>';
 					}
 					?>
+
+			<ul class="pagination">
+                <?php 
+                if ($nbPage < 5) {
+                    for ($i=1; $i<=$nbPage; $i++) {
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=$i'>$i</a></li>";
+                    }
+                } else {
+                    echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=1'>1</a></li>";
+                    if ($page <= 2) {
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=2'>2</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=3'>3</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+                    } elseif ($page == 3) {
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=2'>2</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=3'>3</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=4'>4</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+                    } elseif ($page == ($nbPage-2)) {
+                        echo "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($nbPage-3)."'>".($nbPage-3)."</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($nbPage-2)."'>".($nbPage-2)."</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($nbPage-1)."'>".($nbPage-1)."</a></li>";
+                    } elseif ($page > ($nbPage-2)) {
+                        echo "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($nbPage-2)."'>".($nbPage-2)."</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($nbPage-1)."'>".($nbPage-1)."</a></li>";
+                    } else {
+                        echo "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($page-1)."'>".($page-1)."</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=$page'>$page</a></li>";
+                        echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=".($page+1)."'>".($page+1)."</a></li>";
+                        echo "<li class='page-item disabled'><a class='page-link'>...</a></li>";
+                    }
+                    echo "<li class='page-item'><a class='page-link' href='modif-produit.php?page=$nbPage'>$nbPage</a></li>";
+                }
+                ?>
+            </ul>
 		</div>
 
 		<?php require_once "includes/footer.php"; ?>
