@@ -51,6 +51,16 @@ class ProduitManager{
         }
         return $donnees;
     }
+    
+    public function getTroisDernierByCategorie($idCategorie) {
+		$req = $this->_db->query("SELECT idProduit, nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where idCategorie = $idCategorie AND dispo = 1 ORDER BY idProduit DESC LIMIT 3");
+		$donnees = $req->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($donnees as $i => $val) {
+            $donnees[$i]['nom'] = stripslashes($donnees[$i]['nom']);
+            $donnees[$i]['descriptionProduit'] = stripslashes($donnees[$i]['descriptionProduit']);
+        }
+        return $donnees;
+    }
 
     public function getByNom($nom) {
 		$req = $this->_db->prepare("SELECT idProduit, nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where nom = :nom");
