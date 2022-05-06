@@ -19,9 +19,9 @@ class AvisClientManager {
         $req->execute();
     }
 
-    public function delete(AvisClient $avisClient) {
-        $this->_db->query('DELETE FROM avis_client WHERE idAvisClient = '.$avisClient->getIdAvisClient());
-    }
+    // public function delete(AvisClient $avisClient) {
+    //     $this->_db->query('DELETE FROM avis_client WHERE idAvisClient = '.$avisClient->getIdAvisClient());
+    // }
 
     public function update(AvisClient $avisClient) {
         $req = $this->_db->prepare('UPDATE avis_client SET idProduit = :idProduit, dateAvis = :dateAvis, idClient = :idClient, note = :note, titre = :titre, contenu = :contenu 

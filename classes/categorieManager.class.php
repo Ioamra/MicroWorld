@@ -13,9 +13,9 @@ class CategorieManager{
         $req->execute();
     }
 
-    public function delete(Categorie $categorie) {
-        $this->_db->query('DELETE FROM categorie WHERE idCategorie = '.$categorie->getIdCategorie());
-    }
+    // public function delete(Categorie $categorie) {
+    //     $this->_db->query('DELETE FROM categorie WHERE idCategorie = '.$categorie->getIdCategorie());
+    // }
 
     public function update(Categorie $categorie) {
         $req = $this->_db->prepare('UPDATE categorie SET nomCategorie = :nomCategorie WHERE idCategorie = :idCategorie');

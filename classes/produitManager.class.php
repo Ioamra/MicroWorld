@@ -30,9 +30,9 @@ class ProduitManager{
         $req->execute();
     }
 
-    public function delete(Produit $produit) {
-        $this->_db->query('DELETE FROM produit WHERE idProduit = '.$produit->getIdProduit());
-    }
+    // public function delete(Produit $produit) {
+    //     $this->_db->query('DELETE FROM produit WHERE idProduit = '.$produit->getIdProduit());
+    // }
 
     public function get($idProduit) {
 		$req = $this->_db->query("SELECT nom, prix, idCategorie, descriptionProduit, caracteristique, dispo FROM produit Where idProduit = $idProduit");

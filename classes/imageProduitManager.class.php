@@ -14,9 +14,9 @@ class ImageProduitManager{
         $req->execute();
     }
 
-    public function delete(ImageProduit $imageProduit) {
-        $this->_db->query('DELETE FROM image_produit WHERE idProduit = '.$imageProduit->getIdProduit());
-    }
+    // public function delete(ImageProduit $imageProduit) {
+    //     $this->_db->query('DELETE FROM image_produit WHERE idProduit = '.$imageProduit->getIdProduit());
+    // }
 
     public function get($idProduit) {
 		$req = $this->_db->query('SELECT cheminImage FROM image_produit Where idProduit = '.$idProduit);

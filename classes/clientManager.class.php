@@ -53,9 +53,9 @@ class ClientManager{
         header("location:index.php");
     }
 
-    public function delete(Client $client) {
-        $this->_db->query('DELETE FROM client WHERE idClient = '.$client->getIdClient());
-    }
+    // public function delete(Client $client) {
+    //     $this->_db->query('DELETE FROM client WHERE idClient = '.$client->getIdClient());
+    // }
 
     public function verifMdp(Client $client) {
         $req = $this->_db->prepare('SELECT * FROM client WHERE idClient = :idClient AND mdp = :mdp');
@@ -123,6 +123,7 @@ class ClientManager{
             $_SESSION['telephone'] = $telephone;
             $_SESSION['adresse'] = $adresse;
             header("location:index.php");
+            return true;
         } else {
             return false;
         }

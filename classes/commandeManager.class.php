@@ -14,9 +14,9 @@ class CommandeManager{
         $req->execute();
     }
 
-    public function delete(Commande $commande) {
-        $this->_db->query('DELETE FROM commande WHERE idCmde = '.$commande->getIdCmde());
-    }
+    // public function delete(Commande $commande) {
+    //     $this->_db->query('DELETE FROM commande WHERE idCmde = '.$commande->getIdCmde());
+    // }
 
     public function get($idCmde) {
 		$req = $this->_db->query('SELECT idClient, dateCmde FROM commande Where idCmde = '.$idCmde);
