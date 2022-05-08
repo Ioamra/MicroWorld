@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Casque Audio</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/casque-audio.js"></script>
 </head>

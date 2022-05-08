@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Ajouter un produit</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/ajout-produit.js"></script>
 </head>

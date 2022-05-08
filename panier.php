@@ -10,7 +10,7 @@ if (isset($_SESSION['id'])) {
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Panier</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/panier.js"></script>
 </head>

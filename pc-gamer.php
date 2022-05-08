@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - PC Gamer</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/pc-gamer.js"></script>
 </head>

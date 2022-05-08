@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Souris</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/souris.js"></script>
 </head>

@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Inscription</title>
+		<title>Microworld - Inscription</title>
         <?php require_once "includes/head.php"; ?>
 	</head>	
 	<body class="body-bg-grey">

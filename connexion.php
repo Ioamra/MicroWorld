@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Connexion</title>
+		<title>Microworld - Connexion</title>
         <?php require_once "includes/head.php"; ?>
 	</head>	
 	<body class="body-bg-grey">

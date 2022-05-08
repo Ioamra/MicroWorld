@@ -8,7 +8,7 @@ if(empty($_SESSION['id'])){
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Profil</title>
 	<?php require_once "includes/head.php"; ?>
 </head>
 	<body class="body-bg-grey">

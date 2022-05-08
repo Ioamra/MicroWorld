@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Ecran</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/ecran.js"></script>
 </head>

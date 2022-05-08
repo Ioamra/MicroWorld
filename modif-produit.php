@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - modifié un produit</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/modif-produit.js"></script>
 </head>
@@ -125,7 +125,6 @@
 			echo '';
 			?>
 			<form class="text-center" method="post" enctype="multipart/form-data">
-                <h1 class="pb-4">Ajouter un Produit</h1>
 
                 <div class="mb-3">
                     <label for="nom<?=$produit->getIdProduit();?>" class="form-label">Nom</label>

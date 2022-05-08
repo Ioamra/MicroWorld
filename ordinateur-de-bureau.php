@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>MicroWorld</title>
+	<title>MicroWorld - Ordinateur de bureau</title>
 	<?php require_once "includes/head.php"; ?>
     <script src="assets/js/ordinateur-de-bureau.js"></script>
 </head>
